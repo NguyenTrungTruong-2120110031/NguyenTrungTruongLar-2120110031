@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Link;
 use Illuminate\Support\Str;
-use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryStoreRequest; 
 use App\Http\Requests\CategoryUpdateRequest;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -50,6 +51,16 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->created_at = date('Y-m-d H:i:s');
         $category->created_by = 1;
+        //Upload file
+        if($request->has('img')){
+            $path_dir = "image/category/";
+            $file=$request->file('img');
+            $extension=$file->getClientOriginalExtension();
+            $filename=$category->slug.'.'.$extension;
+            $file->move($path_dir, $filename);
+            $category->img=$filename;
+        }
+        //End upload file
         if($category->save()){
             $link = new Link();
             $link->slug = $category->slug;
@@ -114,6 +125,19 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->updated_at = date('Y-m-d H:i:s');
         $category->updated_by = 1;
+         //Upload file
+         if($request->has('img')){
+            $path_dir = "image/category/";
+            if(File::exists($path_dir.$category->img)){
+                File::delete($path_dir.$category->img);
+            }
+            $file=$request->file('img');
+            $extension=$file->getClientOriginalExtension();
+            $filename=$category->slug.'.'.$extension;
+            $file->move($path_dir, $filename);
+            $category->img=$filename;
+        }
+        //End upload file
         if($category->save()){
             $link = Link::where([['type','=','category'],['table_id','=',$id]])->first();
             $link->slug = $category->slug;
@@ -121,11 +145,8 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('message', ['type'=>'success', 'msg'
             => 'Thêm mẫu tin thành công!']);
         }
-        else
-        {
-            return redirect()->route('category.index')->with('message', ['type'=>'danger', 'msg'
-            => 'Thêm không thành công!']);
-        }
+        return redirect()->route('category.index')->with('message', ['type'=>'danger', 'msg'
+        => 'Thêm không thành công!']);
     }
 
     /**
@@ -133,9 +154,29 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        echo('Xoá');
+        $category = Category::find($id);
+        //Lấy thông tin hình cần xoá
+        $path_dir = "image/category/";
+        $path_img_delete=$path_dir.$category->img;
+        //
+        if($category == null){
+            return redirect()->route('category.trash')->with('message', ['type'=>'denger', 'msg'
+            => 'Mẫu tin không tông tại!']);
+        }
+        if($category->delete()){
+            
+            if(File::exists($path_img_delete)){
+                File::delete($path_img_delete);
+            }
+            $link = Link::where([['type','=','category'],['table_id','=',$id]])->first();
+            $link->delete();
+            return redirect()->route('category.trash')->with('message', ['type'=>'success', 'msg'
+            => 'Thêm mẫu tin thành công!']);
+        }
+        return redirect()->route('category.trash')->with('message', ['type'=>'danger', 'msg'
+        => 'Thêm không thành công!']);
     }
-    ///Status
+    ///Status///
     public function status(string $id)
     {
         $category = Category::find($id);
@@ -143,17 +184,14 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('message', ['type'=>'denger', 'msg'
             => 'Mẫu tin không tông tại!']);
         }
-        else
-        {
-            $category->status = ($category->status == 1) ? 2 : 1;
-            $category->updated_at = date('Y-m-d H:i:s');
-            $category->updated_by = 1;
-            $category->save();
-            return redirect()->route('category.index')->with('message', ['type'=>'success', 'msg'
-            => 'Thay đổi trạng thái thành công!']);
-        }
+        $category->status = ($category->status == 1) ? 2 : 1;
+        $category->updated_at = date('Y-m-d H:i:s');
+        $category->updated_by = 1;
+        $category->save();
+        return redirect()->route('category.index')->with('message', ['type'=>'success', 'msg'
+        => 'Thay đổi trạng thái thành công!']);
     }
-    ///DELETE
+    ///DELETE///
     public function delete(string $id)
     {
         $category = Category::find($id);
@@ -161,14 +199,33 @@ class CategoryController extends Controller
             return redirect()->route('category.index')->with('message', ['type'=>'denger', 'msg'
             => 'Mẫu tin không tông tại!']);
         }
-        else
-        {
-            $category->status = 0;
-            $category->updated_at = date('Y-m-d H:i:s');
-            $category->updated_by = 1;
-            $category->save();
-            return redirect()->route('category.index')->with('message', ['type'=>'success', 'msg'
-            => 'Đã xoá thành công!']);
-        }
+        $category->status = 0;
+        $category->updated_at = date('Y-m-d H:i:s');
+        $category->updated_by = 1;
+        $category->save();
+        return redirect()->route('category.index')->with('message', ['type'=>'success', 'msg'
+        => 'Đã xoá thành công!']);
     }
+    ///TRASH///
+    public function trash()
+    {
+        $list_category = Category::where('status', '=', 0)->orderBy('created_at', 'desc')->get();
+        return view('backend.category.trash', compact('list_category'));
+    }
+    ///RESTORE///
+    public function restore(string $id)
+    {
+        $category = Category::find($id);
+        if($category == null){
+            return redirect()->route('category.trash')->with('message', ['type'=>'denger', 'msg'
+            => 'Mẫu tin không tông tại!']);
+        }
+        $category->status = 2;
+        $category->updated_at = date('Y-m-d H:i:s');
+        $category->updated_by = 1;
+        $category->save();
+        return redirect()->route('category.trash')->with('message', ['type'=>'success', 'msg'
+        => 'Thay đổi trạng thái thành công!']);
+    }
+
 }

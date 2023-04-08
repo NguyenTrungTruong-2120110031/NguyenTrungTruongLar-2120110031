@@ -31,11 +31,8 @@
               <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-ban"></i> Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="{{route('category.create')}}" class="btn btn-sm btn-success">
-                <i class="fas fa-plus"></i> Thêm
-              </a>
-              <a href="{{route('category.trash')}}" class="btn btn-sm btn-danger">
-                <i class="fas fa-trash-alt"></i> Thùng rác
+              <a href="{{route('category.index')}}" class="btn btn-sm btn-info">
+                <i class="fas fa-sign-out-alt"></i> Quay về danh sách
               </a>
             </div>
           </div>
@@ -65,22 +62,10 @@
                 <td>{{$category->slug}}</td>
                 <td>{{$category->created_at}}</td>
                 <td class="text-center">
-                  @if ($category->status==1)
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-toggle-on"></i>
-                  </a>  
-                  @else
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
-                    <i class="fas fa-toggle-off"></i>
+                  <a href="{{route('category.restore', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
+                    <i class="far fa-window-restore"></i>
                   </a>
-                  @endif
-                  <a href="{{route('category.edit', ['category'=>$category->id])}}" class="btn btn-sm btn-info">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a href="{{route('category.show', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-eye"></i>
-                  </a>
-                  <a href="{{route('category.delete', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
+                  <a href="{{route('category.destroy', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </td>

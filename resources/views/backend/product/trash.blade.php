@@ -31,11 +31,8 @@
               <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-ban"></i> Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="{{route('category.create')}}" class="btn btn-sm btn-success">
-                <i class="fas fa-plus"></i> Thêm
-              </a>
-              <a href="{{route('category.trash')}}" class="btn btn-sm btn-danger">
-                <i class="fas fa-trash-alt"></i> Thùng rác
+              <a href="{{route('product.index')}}" class="btn btn-sm btn-info">
+                <i class="fas fa-sign-out-alt"></i> Quay về danh sách
               </a>
             </div>
           </div>
@@ -55,36 +52,24 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($list_category as $category)
+              @foreach ($list_product as $product)
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td>
-                  <img class="img-fluid" src="{{asset('image/category/'.$category->img)}}" alt="{{$category->img}}">
+                  <img class="img-fluid" src="{{asset('image/product/'.$product->img)}}" alt="{{$product->img}}">
                 </td>
-                <td>{{$category->name}}</td>
-                <td>{{$category->slug}}</td>
-                <td>{{$category->created_at}}</td>
+                <td>{{$product->name}}</td>
+                <td>{{$product->slug}}</td>
+                <td>{{$product->created_at}}</td>
                 <td class="text-center">
-                  @if ($category->status==1)
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-toggle-on"></i>
-                  </a>  
-                  @else
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
-                    <i class="fas fa-toggle-off"></i>
+                  <a href="{{route('product.restore', ['product'=>$product->id])}}" class="btn btn-sm btn-success">
+                    <i class="far fa-window-restore"></i>
                   </a>
-                  @endif
-                  <a href="{{route('category.edit', ['category'=>$category->id])}}" class="btn btn-sm btn-info">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a href="{{route('category.show', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-eye"></i>
-                  </a>
-                  <a href="{{route('category.delete', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
+                  <a href="{{route('product.destroy', ['product'=>$product->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </td>
-                <td class="text-center">{{$category->id}}</td>
+                <td class="text-center">{{$product->id}}</td>
               </tr>
               @endforeach
             </tbody>

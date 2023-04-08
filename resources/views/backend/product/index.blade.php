@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Tất cả danh mục sản phẩm')
+@section('title', 'Tất cả sản phẩm')
 @section('content')
       <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tất Cả Danh Mục</h1>
+            <h1>Tất Cả Sản Phẩm</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Tất cả danh mục</li>
+              <li class="breadcrumb-item active">Tất cả sản phẩm</li>
             </ol>
           </div>
         </div>
@@ -31,10 +31,10 @@
               <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-ban"></i> Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="{{route('category.create')}}" class="btn btn-sm btn-success">
+              <a href="{{route('product.create')}}" class="btn btn-sm btn-success">
                 <i class="fas fa-plus"></i> Thêm
               </a>
-              <a href="{{route('category.trash')}}" class="btn btn-sm btn-danger">
+              <a href="{{route('product.trash')}}" class="btn btn-sm btn-danger">
                 <i class="fas fa-trash-alt"></i> Thùng rác
               </a>
             </div>
@@ -47,7 +47,7 @@
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
                 <th style="width:90px"; class="text-center">Hình</th>
-                <th>Tên danh mục</th>
+                <th>Tên sản phẩm</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
                 <th style="width:200px"; class="text-center">Chức năng</th>
@@ -55,36 +55,36 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($list_category as $category)
+              @foreach ($list_product as $product)
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td>
-                  <img class="img-fluid" src="{{asset('image/category/'.$category->img)}}" alt="{{$category->img}}">
+                  <img class="img-fluid" src="{{asset('image/product/'.$product->img)}}" alt="{{$product->img}}">
                 </td>
-                <td>{{$category->name}}</td>
-                <td>{{$category->slug}}</td>
-                <td>{{$category->created_at}}</td>
+                <td>{{$product->name}}</td>
+                <td>{{$product->slug}}</td>
+                <td>{{$product->created_at}}</td>
                 <td class="text-center">
-                  @if ($category->status==1)
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
+                  @if ($product->status==1)
+                  <a href="{{route('product.status', ['product'=>$product->id])}}" class="btn btn-sm btn-success">
                     <i class="fas fa-toggle-on"></i>
                   </a>  
                   @else
-                  <a href="{{route('category.status', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
+                  <a href="{{route('product.status', ['product'=>$product->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-toggle-off"></i>
                   </a>
                   @endif
-                  <a href="{{route('category.edit', ['category'=>$category->id])}}" class="btn btn-sm btn-info">
+                  <a href="{{route('product.edit', ['product'=>$product->id])}}" class="btn btn-sm btn-info">
                     <i class="fas fa-edit"></i>
                   </a>
-                  <a href="{{route('category.show', ['category'=>$category->id])}}" class="btn btn-sm btn-success">
+                  <a href="{{route('product.show', ['product'=>$product->id])}}" class="btn btn-sm btn-success">
                     <i class="fas fa-eye"></i>
                   </a>
-                  <a href="{{route('category.delete', ['category'=>$category->id])}}" class="btn btn-sm btn-danger">
+                  <a href="{{route('product.delete', ['product'=>$product->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </td>
-                <td class="text-center">{{$category->id}}</td>
+                <td class="text-center">{{$product->id}}</td>
               </tr>
               @endforeach
             </tbody>

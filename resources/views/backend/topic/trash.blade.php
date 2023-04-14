@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Tất cả danh mục sản phẩm')
+@section('title', 'Tất cả danh mục chủ đề')
 @section('content')
       <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tất Cả Danh Mục</h1>
+            <h1>Tất Cả Chủ Đề</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Tất cả danh mục</li>
+              <li class="breadcrumb-item active">Tất cả chủ đề</li>
             </ol>
           </div>
         </div>
@@ -44,7 +44,7 @@
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
                 <th style="width:90px"; class="text-center">Hình</th>
-                <th>Tên danh mục</th>
+                <th>Tên chủ đề</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
                 <th style="width:200px"; class="text-center">Chức năng</th>

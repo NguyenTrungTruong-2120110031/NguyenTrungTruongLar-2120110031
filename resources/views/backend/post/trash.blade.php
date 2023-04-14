@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Tất cả danh mục chủ đề')
+@section('title', 'Tất cả danh mục bài viết')
 @section('content')
       <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tất Cả Chủ Đề</h1>
+            <h1>Tất Cả Bài Viết</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Tất cả chủ đề</li>
+              <li class="breadcrumb-item active">Tất cả bài viết</li>
             </ol>
           </div>
         </div>
@@ -31,11 +31,8 @@
               <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-ban"></i> Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="{{route('topic.create')}}" class="btn btn-sm btn-success">
-                <i class="fas fa-plus"></i> Thêm
-              </a>
-              <a href="{{route('topic.trash')}}" class="btn btn-sm btn-danger">
-                <i class="fas fa-trash-alt"></i> Thùng rác
+              <a href="{{route('post.index')}}" class="btn btn-sm btn-info">
+                <i class="fas fa-sign-out-alt"></i> Quay về danh sách
               </a>
             </div>
           </div>
@@ -47,7 +44,7 @@
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
                 <th style="width:90px"; class="text-center">Hình</th>
-                <th>Tên chủ đề</th>
+                <th>Tên bài viết</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
                 <th style="width:200px"; class="text-center">Chức năng</th>
@@ -55,36 +52,24 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($list_topic as $topic)
+              @foreach ($list_post as $post)
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
                 <td>
-                  <img class="img-fluid" src="{{asset('image/topic/'.$topic->img)}}" alt="{{$topic->img}}">
+                  <img class="img-fluid" src="{{asset('image/post/'.$post->img)}}" alt="{{$post->img}}">
                 </td>
-                <td>{{$topic->name}}</td>
-                <td>{{$topic->slug}}</td>
-                <td>{{$topic->created_at}}</td>
+                <td>{{$post->name}}</td>
+                <td>{{$post->slug}}</td>
+                <td>{{$post->created_at}}</td>
                 <td class="text-center">
-                  @if ($topic->status==1)
-                  <a href="{{route('topic.status', ['topic'=>$topic->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-toggle-on"></i>
-                  </a>  
-                  @else
-                  <a href="{{route('topic.status', ['topic'=>$topic->id])}}" class="btn btn-sm btn-danger">
-                    <i class="fas fa-toggle-off"></i>
+                  <a href="{{route('post.restore', ['post'=>$post->id])}}" class="btn btn-sm btn-success">
+                    <i class="far fa-window-restore"></i>
                   </a>
-                  @endif
-                  <a href="{{route('topic.edit', ['topic'=>$topic->id])}}" class="btn btn-sm btn-info">
-                    <i class="fas fa-edit"></i>
-                  </a>
-                  <a href="{{route('topic.show', ['topic'=>$topic->id])}}" class="btn btn-sm btn-success">
-                    <i class="fas fa-eye"></i>
-                  </a>
-                  <a href="{{route('topic.delete', ['topic'=>$topic->id])}}" class="btn btn-sm btn-danger">
+                  <a href="{{route('post.destroy', ['post'=>$post->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </td>
-                <td class="text-center">{{$topic->id}}</td>
+                <td class="text-center">{{$post->id}}</td>
               </tr>
               @endforeach
             </tbody>

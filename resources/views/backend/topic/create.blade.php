@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Thêm danh mục sản phẩm')
+@section('title', 'Thêm danh mục chủ đề')
 @section('content')
   <form action="{{route('topic.store')}}" method="post" enctype="multipart/form-data">
     @csrf
@@ -9,12 +9,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Thêm Danh Mục</h1>
+              <h1>Thêm Chủ Đề</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-                <li class="breadcrumb-item active">Thêm danh mục</li>
+                <li class="breadcrumb-item active">Thêm chủ đề</li>
               </ol>
             </div>
           </div>
@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="mb-3">
-                  <label for="name">Tên danh mục</label>
+                  <label for="name">Tên chủ đề</label>
                   <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control" 
                   placeholder="Nhập tên danh mục">
                   @if ($errors->has('name'))
@@ -75,7 +75,7 @@
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                   <label for="parent_id">Danh mục cha</label>
                   <select class="form-control" id="parent_id" name="parent_id">
                     <option value="0">--Cấp cha--</option>
@@ -88,7 +88,7 @@
                     <option value="0">--Vị trí sắp xếp--</option>
                     {!! $html_sort_order !!}
                   </select>
-                </div>
+                </div> --}}
                 <div class="mb-3">
                   <label for="img">Hình đại diện</label>
                   <input type="file" name="img" value="{{old('img')}}" id="img" class="form-control" 

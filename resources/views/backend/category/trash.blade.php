@@ -43,7 +43,6 @@
             <thead>
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
-                <th style="width:90px"; class="text-center">Hình</th>
                 <th>Tên danh mục</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
@@ -55,9 +54,6 @@
               @foreach ($list_category as $category)
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
-                <td>
-                  <img class="img-fluid" src="{{asset('image/category/'.$category->img)}}" alt="{{$category->img}}">
-                </td>
                 <td>{{$category->name}}</td>
                 <td>{{$category->slug}}</td>
                 <td>{{$category->created_at}}</td>

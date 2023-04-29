@@ -5,7 +5,7 @@
   <div class="container">
       <div class="row">
           <div class="col-sm-2">
-              <div class="left-sidebar">
+              {{-- <div class="left-sidebar">
                   <h2>Danh Mục Sản Phẩm</h2>
                   <div class="panel-group category-products" id="accordian">
                       <div class="panel panel-default">
@@ -51,7 +51,7 @@
                         </div>
                       </div>							
                   </div><!--/category-products-->
-              </div>
+              </div> --}}
           </div>
           
           <div class="col-sm-10 padding-right">
@@ -61,15 +61,15 @@
                       <div class="product-image-wrapper">
                           <div class="single-products">
                                   <div class="productinfo text-center">
-                                      <img src="images/home/aothun2.jpg" alt="" />
-                                      <h2>240000</h2>
-                                      <p>Áo thun thể thao nike</p>
+                                      <img src="images/home/giay1.png" alt="" />
+                                      <h2>680.000</h2>
+                                      <p>GIÀY BÓNG ĐÁ PAN TIGER 8</p>
                                       <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                   </div>
                                   <div class="product-overlay">
                                       <div class="overlay-content">
-                                          <h2>240000</h2>
-                                          <p>Áo thun thể thao nike</p>
+                                          <h2>680.000</h2>
+                                          <p>GIÀY BÓNG ĐÁ PAN TIGER 8</p>
                                           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                       </div>
                                   </div>
@@ -80,15 +80,15 @@
                       <div class="product-image-wrapper">
                           <div class="single-products">
                               <div class="productinfo text-center">
-                                  <img src="images/home/aothun3.jpg" alt="" />
-                                  <h2>400000</h2>
-                                  <p>Áo thun thể thao nike</p>
+                                  <img src="images/home/giay2.png" alt="" />
+                                  <h2>490.000</h2>
+                                  <p>GIÀY BÓNG ĐÁ PAN TANGO 2</p>
                                   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                               </div>
                               <div class="product-overlay">
                                   <div class="overlay-content">
-                                      <h2>400000</h2>
-                                      <p>Áo thun thể thao nike</p>
+                                    <h2>490.000</h2>
+                                    <p>GIÀY BÓNG ĐÁ PAN TANGO 2</p>
                                       <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                   </div>
                               </div>
@@ -99,15 +99,15 @@
                       <div class="product-image-wrapper">
                           <div class="single-products">
                               <div class="productinfo text-center">
-                                  <img src="images/home/aothunadidas1.png" alt="" />
-                                  <h2>340000</h2>
-                                  <p>Easy Polo Black Edition</p>
+                                  <img src="images/home/giay3.png" alt="" />
+                                  <h2>555.000</h2>
+                                  <p>GIÀY BÓNG ĐÁ QH19</p>
                                   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                               </div>
                               <div class="product-overlay">
                                   <div class="overlay-content">
-                                      <h2>340000</h2>
-                                      <p>Easy Polo Black Edition</p>
+                                      <h2>555.000</h2>
+                                      <p>GIÀY BÓNG ĐÁ QH19</p>
                                       <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                   </div>
                               </div>
@@ -119,15 +119,15 @@
                       <div class="product-image-wrapper">
                           <div class="single-products">
                               <div class="productinfo text-center">
-                                  <img src="images/home/balo.png" style="max-width:230px;" alt="" />
-                                  <h2>340000</h2>
-                                  <p>Easy Polo Black Edition</p>
+                                  <img src="images/home/giay4.png" style="max-width:230px;" alt="" />
+                                  <h2>180.000</h2>
+                                  <p>Giày GEET 3 sọc TF - Bạc</p>
                                   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                               </div>
                               <div class="product-overlay">
                                   <div class="overlay-content">
-                                      <h2>340000</h2>
-                                      <p>Easy Polo Black Edition</p>
+                                      <h2>180.000</h2>
+                                      <p>Giày GEET 3 sọc TF - Bạc</p>
                                       <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                   </div>
                               </div>
@@ -140,19 +140,19 @@
                       <div class="product-image-wrapper">
                           <div class="single-products">
                               <div class="productinfo text-center">
-                                  <img src="images/home/giaymizuno.png" alt="" />
-                                  <h2>210000</h2>
-                                  <p>Easy Polo Black Edition</p>
+                                  <img src="images/home/giay5.png" alt="" />
+                                  <h2>619.000</h2>
+                                  <p>GIÀY ĐÁ BÓNG TUẤN ANH KAMITO TA11-IN IC</p>
                                   <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                               </div>
                               <div class="product-overlay">
                                   <div class="overlay-content">
-                                      <h2>210000</h2>
-                                      <p>Easy Polo Black Edition</p>
+                                      <h2>619.000</h2>
+                                      <p>GIÀY ĐÁ BÓNG TUẤN ANH KAMITO TA11-IN IC</p>
                                       <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                   </div>
                               </div>
-                              <img src="images/home/sale.png" class="new" alt="" />
+                              
                           </div>
                       </div>
                   </div>
@@ -172,9 +172,9 @@
                               <div class="product-image-wrapper">
                                   <div class="single-products">
                                       <div class="productinfo text-center">
-                                          <img src="images/home/aokhoacnike.jpg" alt="" />
-                                          <h2>200000</h2>
-                                          <p>Easy Polo Black Edition</p>
+                                          <img src="images/home/giay6.png" alt="" />
+                                          <h2>449.000</h2>
+                                          <p>GIÀY ĐÁ BÓNG MIRA GALAXY S1 TF</p>
                                           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                       </div>
                                   </div>
@@ -184,9 +184,9 @@
                               <div class="product-image-wrapper">
                                   <div class="single-products">
                                       <div class="productinfo text-center">
-                                          <img src="images/home/giaymizuno.png" alt="" />
-                                          <h2>210000</h2>
-                                          <p>Mizuno </p>
+                                          <img src="images/home/giay7.png" alt="" />
+                                          <h2>1.099.000</h2>
+                                          <p>GIÀY BÓNG ĐÁ SÂN CỎ TỰ NHIÊN KAMITO TA11 PRO</p>
                                           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                       </div>
                                       
@@ -197,9 +197,9 @@
                               <div class="product-image-wrapper">
                                   <div class="single-products">
                                       <div class="productinfo text-center">
-                                          <img src="images/home/gangtay.png" alt="" />
-                                          <h2>450000</h2>
-                                          <p>Găng tay  </p>
+                                          <img src="images/home/giay8.png" alt="" />
+                                          <h2>210.000</h2>
+                                          <p>Giày GEET TF - Đặc biệt</p>
                                           <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                       </div>
                                   </div>

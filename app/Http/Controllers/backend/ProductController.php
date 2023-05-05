@@ -27,14 +27,18 @@ class ProductController extends Controller
     public function create()
     {
         $list_product = Product::where('status', '!=', 0)->get();
-        $html_parent_id='';
-        $html_sort_order='';
+        $list_brand = Brand::where('status', '!=', 0)->get();
+        $html_cate_id='';
         foreach($list_product as $item)
         {
-            $html_parent_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
-            $html_sort_order.='<option value="'.$item->sort_order.'">Sau: '.$item->name.'</option>';
+            $html_cate_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
         }
-        return view('backend.product.create', compact('html_parent_id', 'html_sort_order'));
+        $html_brand_id='';
+        foreach($list_brand as $item)
+        {
+            $html_brand_id.='<option value="'.$item->id.'">'.$item->name.'</option>';
+        }
+        return view('backend.product.create', compact('html_cate_id', 'html_brand_id'));
     }
 
     /**

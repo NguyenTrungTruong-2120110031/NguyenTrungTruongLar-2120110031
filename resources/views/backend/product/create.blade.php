@@ -41,72 +41,66 @@
           </div>
           <div class="card-body">
             @includeIf('backend.message_alert')
-            <div class="row">
-              <div class="col-md-9">
-                <div class="mb-3">
-                  <label for="name">Tên sản phẩm</label>
-                  <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control" 
-                  placeholder="Nhập tên danh mục">
-                  @if ($errors->has('name'))
-                      <div class="text-danger">
-                        {{$errors->first('name')}}
-                      </div>
-                  @endif
-                </div>
-                <div class="mb-3">
-                  <label for="metakey">Từ khoá</label>
-                  <textarea name="metakey" id="metakey" class="form-control" 
-                  placeholder="Từ khoá tìm kiếm">{{old('metakey')}}</textarea>
-                  @if ($errors->has('metakey'))
-                      <div class="text-danger">
-                        {{$errors->first('metakey')}}
-                      </div>
-                  @endif
-                </div>
-                <div class="mb-3">
-                  <label for="metadesc">Mô tả</label>
-                  <textarea name="metadesc" id="metadesc" class="form-control" 
-                  placeholder="Nhập mô tả">{{old('metadesc')}}</textarea>
-                  @if ($errors->has('metadesc'))
-                      <div class="text-danger">
-                        {{$errors->first('metadesc')}}
-                      </div>
-                  @endif
-                </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="productinfo-tab" data-toggle="tab" 
+                data-target="#productinfo" type="button" role="tab" aria-controls="productinfo" aria-selected="true">Thông tin sản phẩm</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="productimage-tab" data-toggle="tab" 
+                data-target="#productimage" type="button" role="tab" aria-controls="productimage" aria-selected="false">Hình ảnh</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="productattribute-tab" data-toggle="tab" 
+                data-target="#productattribute" type="button" role="tab" aria-controls="productattribute" aria-selected="false">Thuộc tính</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="productsale-tab" data-toggle="tab" 
+                data-target="#productsale" type="button" role="tab" aria-controls="productsale" aria-selected="false">Khuyến mãi</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="productstore-tab" data-toggle="tab" 
+                data-target="#productstore" type="button" role="tab" aria-controls="productstore" aria-selected="false">Nhập sản phẩm</button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active border-right border-bottom border-left p-3" id="productinfo" 
+                role="tabpanel" aria-labelledby="productinfo-tab">
+                @includeIf('backend.product.tap_productinfo')              
               </div>
-              <div class="col-md-3">
-                <div class="mb-3">
-                  <label for="parent_id">Danh mục cha</label>
-                  <select class="form-control" id="parent_id" name="parent_id">
-                    <option value="0">--Cấp cha--</option>
-                    {!! $html_parent_id !!}
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="sort_order">Vị trí sắp xếp</label>
-                  <select class="form-control" id="sort_order" name="sort_order">
-                    <option value="0">--Vị trí sắp xếp--</option>
-                    {!! $html_sort_order !!}
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for="img">Hình đại diện</label>
-                  <input type="file" name="img" value="{{old('img')}}" id="img" class="form-control" 
-                  placeholder="Nhập tên danh mục">
-                </div>
-                <div class="mb-3">
-                  <label for="status">Trạng thái</label>
-                  <select class="form-control" id="status" name="status">
-                    <option value="1">Xuất bản</option>
-                    <option value="2">Chưa xuất bản</option>
-                  </select>
-                </div>
+              <div class="tab-pane fade border-right border-bottom border-left p-3" id="productimage" 
+                role="tabpanel" aria-labelledby="productimage-tab">
+                @includeIf('backend.product.tap_productimage')
               </div>
+              <div class="tab-pane fade" id="productsale" 
+                role="tabpanel" aria-labelledby="productsale-tab">
+                @includeIf('backend.product.tap_productsale')
+              </div>
+              <div class="tab-pane fade" id="productattribute" 
+                role="tabpanel" aria-labelledby="productattribute-tab">
+                @includeIf('backend.product.tap_productattribute')
+              </div>
+              <div class="tab-pane fade" id="productstore" 
+                role="tabpanel" aria-labelledby="productstore-tab">
+                @includeIf('backend.product.tap_productstore')
+              </div>
+                
             </div>
+
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-            Footer
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6 text-right">
+                <button type="submit" class="btn btn-sm btn-success">
+                  <i class="fas fa-save"></i> Lưu[Thêm]
+                </button>
+                <a href="{{route('product.index')}}" class="btn btn-sm btn-info">
+                  <i class="fas fa-sign-out-alt"></i> Quay về danh sách
+                </a>
+              </div>
+            </div>
           </div>
           <!-- /.card-footer-->
         </div>

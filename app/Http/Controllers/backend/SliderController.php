@@ -52,7 +52,7 @@ class SliderController extends Controller
         $slider->created_by = 1;
         //Upload file
         if($request->has('img')){
-            $path_dir = "image/slider/";
+            $path_dir = "images/slider/";
             $file=$request->file('img');
             $extension=$file->getClientOriginalExtension();
             $filename=$slider->slug.'.'.$extension;

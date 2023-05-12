@@ -48,6 +48,11 @@
           <option value="">--Chọn danh mục--</option>
           {!! $html_cate_id !!}
         </select>
+        @if ($errors->has('cate_id'))
+            <div class="text-danger">
+              {{$errors->first('cate_id')}}
+            </div>
+        @endif
       </div>
       <div class="mb-3">
         <label for="brand_id">Chọn thương hiệu</label>
@@ -55,6 +60,11 @@
           <option value="">--Chọn thương hiệu--</option>
           {!! $html_brand_id !!}
         </select>
+        @if ($errors->has('brand_id'))
+            <div class="text-danger">
+              {{$errors->first('brand_id')}}
+            </div>
+        @endif
       </div>
       <div class="mb-3">
         <label for="price_buy">Giá bán</label>

@@ -127,7 +127,7 @@ class TopicController extends Controller
         $topic->updated_by = 1;
          //Upload file
          if($request->has('img')){
-            $path_dir = "image/topic/";
+            $path_dir = "images/topic/";
             if(File::exists($path_dir.$topic->img)){
                 File::delete($path_dir.$topic->img);
             }

@@ -15,13 +15,13 @@
                             @if ($loop->first)
                             <div class="item active">
                                 <div class="col-sm-6">
-                                    <img src="{{asset('images/slider/'.$row_slider->img)}}" style="max-width:990px;" alt="{{$row_slider->img}}" />
+                                    <img src="{{asset('images/slider/'.$row_slider->img)}}" style="max-width:900px;" alt="{{$row_slider->img}}" />
                                 </div>
                             </div>  
                             @else
                             <div class="item">
                                 <div class="col-sm-6">
-                                    <img src="{{asset('images/slider/'.$row_slider->img)}}" style="max-width:990px;"  class="" alt="{{$row_slider->img}}" />
+                                    <img src="{{asset('images/slider/'.$row_slider->img)}}" style="max-width:900px;"  class="" alt="{{$row_slider->img}}" />
                                 </div>
                             </div>
                         

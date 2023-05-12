@@ -53,7 +53,7 @@ class PostController extends Controller
         $post->created_by = 1;
         //Upload file
         if($request->has('img')){
-            $path_dir = "image/post/";
+            $path_dir = "images/post/";
             $file=$request->file('img');
             $extension=$file->getClientOriginalExtension();
             $filename=$post->slug.'.'.$extension;

@@ -53,7 +53,7 @@ class CategoryController extends Controller
         $category->created_by = 1;
         //Upload file
         if($request->has('img')){
-            $path_dir = "image/category/";
+            $path_dir = "images/category/";
             $file=$request->file('img');
             $extension=$file->getClientOriginalExtension();
             $filename=$category->slug.'.'.$extension;

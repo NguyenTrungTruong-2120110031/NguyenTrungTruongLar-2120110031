@@ -9,4 +9,5 @@ class Product_image extends Model
 {
     use HasFactory;
     protected $table='ntt_product_image';
+    public $timestamps = false;
 }

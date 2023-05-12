@@ -53,7 +53,7 @@ class BrandController extends Controller
         $brand->created_by = 1;
         //Upload file
         if($request->has('img')){
-            $path_dir = "image/brand/";
+            $path_dir = "images/brand/";
             $file=$request->file('img');
             $extension=$file->getClientOriginalExtension();
             $filename=$brand->slug.'.'.$extension;

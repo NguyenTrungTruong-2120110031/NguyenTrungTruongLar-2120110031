@@ -9,4 +9,5 @@ class Product_sale extends Model
 {
     use HasFactory;
     protected $table='ntt_product_sale';
+    public $timestamps = false;
 }

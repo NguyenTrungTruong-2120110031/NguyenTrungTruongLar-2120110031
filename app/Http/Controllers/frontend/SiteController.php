@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Post;
 
 class SiteController extends Controller
@@ -63,7 +64,8 @@ class SiteController extends Controller
     ///Trang chủ
     public function home()
     {
-        return view('frontend.home');
+        $list_category = Category::Where([['parent_id', '=', 0],['status', '=', '1']])->get();
+        return view('frontend.home', compact('list_category'));
     }
     public function product_category($slug)
     {
